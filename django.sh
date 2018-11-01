@@ -1,37 +1,31 @@
 #!/bin/bash
-# Folders
+# Folders Name
 CONFIG_FOLDER=config
 SETTINGS_FOLDER=settings
 APP_FOLDER=project_content
 MAIN_APP=main_app
-
+# Create project
 read -p 'Project Name: ' projectname
 django-admin startproject $projectname
 cd $projectname
-
-# Creating environ file
+# Creating environ.env file
 cat > environ.env <<EOF
 SECRET_KEY=
 DEBUG=True
 DATABASE=
-
 EOF
 
 # Creating readme file
 touch README.md
+wget https://github.com/cripto1989/DjangoBoilerplate/blob/master/gitignore
 
 # Apss
 mkdir $APP_FOLDER
-read -n1 -p "Create the first app(called main)? [y,n]" doit 
+read -n1 -p "Create the first app(called $MAIN_APP)? [y,n] " doit 
 case $doit in  
   y|Y) 
     mkdir ./$APP_FOLDER/$MAIN_APP
     python manage.py startapp $MAIN_APP ./$APP_FOLDER/$MAIN_APP
-    echo yes ;; 
-  n|N) 
-    echo no ;; 
-  *) 
-    echo Incorrect option ;; 
 esac
 
 # 
@@ -43,6 +37,5 @@ touch development.py
 touch production.py
 cd ..
 cd ..
-
 
 echo Projecto terminado correctamente 
