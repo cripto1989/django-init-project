@@ -42,6 +42,9 @@ esac
 mkdir ./$APP_FOLDER/templates
 mkdir ./$APP_FOLDER/media
 mkdir ./$APP_FOLDER/static
+mkdir ./$APP_FOLDER/static/img
+mkdir ./$APP_FOLDER/static/css
+mkdir ./$APP_FOLDER/static/js
 
 # Config folder
 mkdir $CONFIG_FOLDER && cd $CONFIG_FOLDER

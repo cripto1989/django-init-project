@@ -1,6 +1,12 @@
 # Django Boilerplate
 The main purpose of this projects is to create a simple project layout using shell scripting as a language for Django projects.
 
+Clone the django.sh file:
+
+```
+git clone https://github.com/cripto1989/DjangoBoilerplate/blob/master/django.sh
+```
+
 You have to add permission to django.sh file:
 ```
 chmod +x django.sh
@@ -18,11 +24,9 @@ For this moment you have to change this values, in next files:
 config/base.py
 ```python
 WSGI_APPLICATION = 'config.wsgi.application'
-```
-config/base.py
-```python
 ROOT_URLCONF = 'config.urls'
 ```
+
 config/wsgi.py
 ```python
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
