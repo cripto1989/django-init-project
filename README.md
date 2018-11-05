@@ -4,7 +4,7 @@ The main purpose of this projects is to create a simple project layout using she
 Clone the django.sh file:
 
 ```
-git clone https://github.com/cripto1989/DjangoBoilerplate/blob/master/django.sh
+wget https://raw.githubusercontent.com/cripto1989/DjangoBoilerplate/master/django.sh
 ```
 
 You have to add permission to django.sh file:
