@@ -7,12 +7,12 @@ APP_FOLDER=project_content
 # Parameters
 MAIN_APP=main
 VIRTUALENV_PATH=./
-PREFIX_ENVIRON=environ
+PREFIX_ENVIRON=environ_
 DJANGO_VERSSION=2.0
 
 # Setting django project name, creating virtualenv and project folder.
 read -p 'Project Name: ' PROJECTNAME
-virtualenv $VIRTUALENV_PATH"$PREFIX_ENVIRON_$PROJECTNAME"
+virtualenv $VIRTUALENV_PATH"$PREFIX_ENVIRON$PROJECTNAME"
 sleep 10
 source ./environ_$PROJECTNAME/bin/activate
 pip install django==$DJANGO_VERSSION
