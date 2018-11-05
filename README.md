@@ -12,3 +12,18 @@ For create a empty project, execute:
 ```
 
 Yoy will have to set the name of the project, and this will create 2 folders: environ_project and project, the first one is the environ folder and the second one is all the project.
+
+For this moment you have to change this values, in next files:
+
+config/base.py
+```python
+WSGI_APPLICATION = 'config.wsgi.application'
+```
+config/base.py
+```python
+ROOT_URLCONF = 'config.urls'
+```
+config/wsgi.py
+```python
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+```

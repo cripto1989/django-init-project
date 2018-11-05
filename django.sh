@@ -1,21 +1,25 @@
 #!/bin/bash
 
+# Folders
 CONFIG_FOLDER=config 
 SETTINGS_FOLDER=settings
 APP_FOLDER=project_content
-MAIN_APP=main_app
+# Parameters
+MAIN_APP=main
 VIRTUALENV_PATH=./
+PREFIX_ENVIRON=environ
 DJANGO_VERSSION=2.0
 
-read -p 'Project Name: ' projectname
-virtualenv $VIRTUALENV_PATH"environ_$projectname"
+# Setting django project name, creating virtualenv and project folder.
+read -p 'Project Name: ' PROJECTNAME
+virtualenv $VIRTUALENV_PATH"$PREFIX_ENVIRON_$PROJECTNAME"
 sleep 10
-source ./environ_$projectname/bin/activate
+source ./environ_$PROJECTNAME/bin/activate
 pip install django==$DJANGO_VERSSION
-django-admin startproject $projectname
+django-admin startproject $PROJECTNAME
 
-if [ -d "$projectname" ]; then
-cd $projectname
+if [ -d "$PROJECTNAME" ]; then
+cd $PROJECTNAME
 # Creating environ.env file
 cat > environ.env <<EOF
 SECRET_KEY=
@@ -23,7 +27,7 @@ DEBUG=True
 DATABASE=
 EOF
 
-# Creating readme file
+# Creating readme file and clone gitignore file
 touch README.md
 wget https://github.com/cripto1989/DjangoBoilerplate/blob/master/.gitignore
 
@@ -35,16 +39,29 @@ case $doit in
     mkdir ./$APP_FOLDER/$MAIN_APP
     python manage.py startapp $MAIN_APP ./$APP_FOLDER/$MAIN_APP
 esac
+mkdir ./$APP_FOLDER/templates
+mkdir ./$APP_FOLDER/media
+mkdir ./$APP_FOLDER/static
 
-# 
+# Config folder
 mkdir $CONFIG_FOLDER && cd $CONFIG_FOLDER
 mkdir $SETTINGS_FOLDER && cd $SETTINGS_FOLDER
-touch base.py
-touch test.py
-touch development.py
-touch production.py
+touch __init__.py
+cat > test.py <<EOF
+from .base import *
+EOF
+cat > development.py <<EOF
+from .base import *
+EOF
+cat > production.py <<EOF
+from .base import *
+EOF
 cd ..
 cd ..
+mv $PROJECTNAME/__init__.py $CONFIG_FOLDER/ 
+mv $PROJECTNAME/urls.py $CONFIG_FOLDER/
+mv $PROJECTNAME/wsgi.py $CONFIG_FOLDER/
+mv $PROJECTNAME/settings.py $CONFIG_FOLDER/$SETTINGS_FOLDER/base.py
+rm -R $PROJECTNAME
 
-echo Finished 
 fi
