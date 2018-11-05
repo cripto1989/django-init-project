@@ -10,7 +10,7 @@ DJANGO_VERSSION=2.0
 read -p 'Project Name: ' projectname
 virtualenv $VIRTUALENV_PATH"environ_$projectname"
 sleep 10
-source ./env_$projectname/bin/activate
+source ./environ_$projectname/bin/activate
 pip install django==$DJANGO_VERSSION
 django-admin startproject $projectname
 
