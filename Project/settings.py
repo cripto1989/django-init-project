@@ -135,4 +135,10 @@ STATICFILES_DIRS=[
     str(APPS_DIR.path('static')),
 ]
 
+MEDIA_ROOT = str(APPS_DIR('media'))
+
+MEDIA_URL = '/media/'
+
 AUTH_USER_MODEL = 'users.CustomUser'
+
+ADMIN_URL = 'config/'
