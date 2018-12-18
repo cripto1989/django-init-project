@@ -10,27 +10,32 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
-import os
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = environ.Path(__file__) - 2
+APPS_DIR = ROOT_DIR.path('project_content')
 
+env = environ.Env()
+
+READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', default=True)
+if READ_DOT_ENV_FILE:    
+    env.read_env(str(ROOT_DIR.path('environ.env')))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-5x2)5pj8*y*bab1rj7z^1j!s=3o*(o!&&l9$c1or)l_ag#95h'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG', default=False)
 
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
-INSTALLED_APPS = [
+DJANGO_APP = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+THIRD_APPS = [
+
+]
+LOCAL_APPS = [
+    'project_content.users',
+]
+
+INSTALLED_APPS = DJANGO_APP + THIRD_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +67,9 @@ ROOT_URLCONF = 'Project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            str(APPS_DIR.path('templates'))
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,11 +88,8 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+DATABASES = {    
+    'default': env.db()
 }
 
 
@@ -103,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-MX'
 
 TIME_ZONE = 'UTC'
 
@@ -118,3 +130,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS=[
+    str(APPS_DIR.path('static')),
+]
+
+AUTH_USER_MODEL = 'users.CustomUser'

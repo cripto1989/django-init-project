@@ -4,9 +4,23 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
 
 [packages]
-django = "*"
+django-environ = "==0.4.5"
+psycopg2-binary = "==2.7.6.1"
+django-model-utils = "==3.1.2"
+python-slugify = "==1.2.6"
+django-crispy-forms = "==1.7.2"
+ipython = "==7.2.0"
+mypy = "==0.641"
+colorama = "==0.4.1"
+pytest = "==4.0.1"
+pytest-sugar = "==0.9.2"
+pytest-django = "==3.4.4"
+Django = "==2.1.4"
+Pillow = "==5.3.0"
+factory_boy = "==2.11.1"
 
 [requires]
 python_version = "3.7"
