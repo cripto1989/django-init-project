@@ -1,0 +1,22 @@
+#  This file is loades at /etc/systemd/system/
+#  The name of the file should be with the extension .service
+#  After you added the file you will be able tu start the service
+#  sudo systemctl {start|restart|stop} gunicorn.service
+
+[Unit]
+Description=gunicorn daemon
+After=syslog.target
+After=network.target
+
+[Service]
+PIDFile=/run/gunicorn/pid
+User=centos
+Group=centos
+WorkingDirectory=/paht/of/project/
+ExecStart=/bin/bash gunicorn_start.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
