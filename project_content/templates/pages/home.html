@@ -1,14 +1,23 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Django Boilerplate</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
+
 <body>
+    <div class="container">
+        <a href="https://github.com/cripto1989/DjangoBoilerplate">
+            <img src="{% static 'img/django-lego.png' %}" alt="">
+        </a>
+    </div>
     <h1>Welcome to Django Boilerplate</h1>
 </body>
-</html> 
+
+</html>
