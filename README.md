@@ -1,33 +1,22 @@
-### Django Boilerplate
+# Django Boilerplate
 
-This project aims is to help us to init a django project, following a defined layout of project that give you a easier way to start a quickly project.
+This project aims is to help us to init a django project, following a defined layout of project that give you a easier way to start, following some patterns from [two scoopes of django](https://www.twoscoopspress.com "Two scoops Page").
 
-Start cloning the project.
-```
-$ git clone https://github.com/cripto1989/DjangoBoilerplate
-```
-#### Pipenv
-```
-$ pipenv shell
-```
-
-```
-$ pipenv install -r requirements/local.txt
-```
-
-**NOTE**: If you don't use pipenv you will have to create a virtualenv manually.
-
-#### Config environ.env
-Create/Change the file environ.env where you should set all your credentials.
+## Config environ.env
+Create or move the file environ.env where you should set all your credentials, the format of your keys should follow the rules from [django-environ](https://github.com/joke2k/django-environ "Django Environ Page").
 ```
 $ mv environ.env.template environ.env
 ```
 
-Generate a new secret key to the project. [Secret Key Django Generator](https://www.miniwebtool.com/django-secret-key-generator/) and paste it in SECRET_KEY.
+## Docker
+In order to start running the project, just execute in your terminal:
+```
+$ docker-compose up
+```
 
-Set your database credentials in the DATABASE_URL.
-
-#### Run your new project
-
-Yoy will be able to execute a migrate and runserver commands.
-
+All commands about django are executed over the docker: 
+```
+$ docker-compose run web python manage.py makemigrations
+$ docker-compose run web python manage.py showmigrations
+$ docker-compose run web python manage.py migrate
+```
