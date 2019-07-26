@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    container_name: project_db
+    ports: 
+      - 5432:5432
+    # environment:
+    #   - POSTGRES_USER=<USER>
+    #   - POSTGRES_PASSWORD=<PASSWORD>
+    #   - POSTGRES_DB=<DATABASE>  
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    # restart: always  
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db  
+    env_file:
+      - environ.env
