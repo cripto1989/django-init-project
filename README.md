@@ -21,3 +21,17 @@ $ docker-compose run web python manage.py makemigrations
 $ docker-compose run web python manage.py showmigrations
 $ docker-compose run web python manage.py migrate
 ```
+
+## Pycharm
+
+Selecting the interprete from Docker:
+
+```
+File >> Settings >> Project >> Project Interprete >> Config Icon >> Add >> Docker Compose
+```
+
+Create a new server
+
+```
+Run >> Edit configurations >> Add new configurations >> host 0.0.0.0 >> Apply >> Run
+```

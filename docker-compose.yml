@@ -6,10 +6,10 @@ services:
     # container_name: project_db
     ports: 
       - 5432:5432
-    # environment:
-    #   - POSTGRES_USER=<USER>
-    #   - POSTGRES_PASSWORD=<PASSWORD>
-    #   - POSTGRES_DB=<DATABASE>  
+    environment:
+      - POSTGRES_USER=django
+      - POSTGRES_PASSWORD=django2019
+      - POSTGRES_DB=mydb  
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
