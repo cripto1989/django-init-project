@@ -43,9 +43,11 @@ DJANGO_APP = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 THIRD_APPS = [
 
 ]
+
 LOCAL_APPS = [
     'project_content.users',
 ]

@@ -3,7 +3,7 @@
 # This shell script file let us run a django project using Gunicorn
 # This could be at within the folder project
 
-NAME="Clivo" # Name of the application
+NAME="Project Name" # Name of the application
 DJANGODIR=/path/of/project/ # Django project directory
 LOGFILE=/opt/project/gunicorn.log
 LOGDIR=$(dirname $LOGFILE)
