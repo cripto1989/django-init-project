@@ -1,1 +1,4 @@
-uwsgi==2.0.18   # https://github.com/unbit/uwsgi
+-r ./base.txt
+
+uwsgi==2.0.18           # https://github.com/unbit/uwsgi
+python-dateutil==2.8.0  # https://github.com/dateutil/dateutil
