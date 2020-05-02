@@ -1,4 +1,4 @@
-# Django Boilerplate
+# Django Init Project
 
 This project aims is to help us to init a django project, following a defined layout of project that give you a easier way to start, following some patterns from [two scoopes of django](https://www.twoscoopspress.com "Two scoops Page").
 
