@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="documentation/python.jpeg">
+</p>
+
 # Django Init Project
 
 This project aims is to help us to init a django project, following a defined layout of project that give you a easier way to start, following some patterns from [two scoopes of django](https://www.twoscoopspress.com "Two scoops Page").
@@ -9,7 +13,23 @@ Create or move the file environ.env where you should set all your credentials, t
 $ mv environ.env.template environ.env
 ```
 
-## Docker
+## Rename Project
+
+In order to rename the folder `project_content`, you should execute the command
+```
+$ mv project_content <PROJECT_NAME> .
+```
+
+And adjust the lines from `base.py` file
+```
+APPS_DIR = ROOT_DIR.path('project_content')
+
+LOCAL_APPS = [
+    'project_content.users',
+]
+```
+
+## Docker commands
 In order to start running the project, just execute in your terminal:
 ```
 $ docker-compose up
@@ -22,8 +42,7 @@ $ docker-compose run web python manage.py showmigrations
 $ docker-compose run web python manage.py migrate
 ```
 
-## Pycharm
-
+## Pycharm configuration
 Selecting the interprete from Docker:
 
 ```
