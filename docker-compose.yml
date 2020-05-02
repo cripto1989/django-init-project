@@ -2,20 +2,19 @@ version: '3'
 
 services:
   db:
-    image: postgres
-    # container_name: project_db
+    image: postgres:12
     ports: 
       - 5432:5432
     environment:
       - POSTGRES_USER=django
-      - POSTGRES_PASSWORD=django2019
-      - POSTGRES_DB=mydb  
+      - POSTGRES_PASSWORD=django
+      - POSTGRES_DB=myproject
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
-    # restart: always  
+    restart: always
     ports:
       - "8000:8000"
     depends_on:
