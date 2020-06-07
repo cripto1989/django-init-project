@@ -6,4 +6,4 @@ django-model-utils==4.0.0       # https://github.com/jazzband/django-model-utils
 python-slugify==4.0.0           # https://github.com/un33k/python-slugify
 Pillow==7.1.2                   # https://github.com/python-pillow/Pillow
 django-crispy-forms==1.9.0      # https://github.com/django-crispy-forms/django-crispy-forms
-djangorestframework==3.11.30    # https://github.com/encode/django-rest-framework
+djangorestframework==3.11.0     # https://github.com/encode/django-rest-framework
