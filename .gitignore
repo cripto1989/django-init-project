@@ -17,9 +17,6 @@ __pycache__/
 *.ini
 uwsgi_params
 
-### File wsgi for deploy
-config/wsgi.py
-
 ### Folder for collectstatic
 staticfiles/
 
