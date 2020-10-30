@@ -1,4 +1,5 @@
 from .base import *
+"""
 from .base import env
 
 DEBUG = True
@@ -15,3 +16,4 @@ EMAIL_BACKEND = env(
 )
 
 INSTALLED_APPS += []
+"""
