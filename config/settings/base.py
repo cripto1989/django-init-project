@@ -20,7 +20,9 @@ APPS_DIR = BASE_DIR / "core"
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "xbcx3(v*@1(&a(zd2p7&us-^9du&4)^pznzk^hkilbj4@j-8bv"
+SECRET_KEY = os.getenv(
+    "SECRET_KEY", default="xbcx3(v*@1(&a(zd2p7&us-^9du&4)^pznzk^hkilbj4@j-8bv"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,8 +31,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
-
-INSTALLED_APPS = [
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -38,6 +39,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+THIRD_APPS = []
+
+LOCAL_APPS = []
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
