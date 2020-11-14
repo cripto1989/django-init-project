@@ -1,7 +1,7 @@
 -r ./base.txt
 
 # Tools
-ipython==7.14.0         # https://github.com/ipython/ipython
-mypy==0.770             # https://github.com/python/mypy
-colorama==0.4.3         # https://github.com/tartley/colorama
-
+ipython==7.14.0             # https://github.com/ipython/ipython
+mypy==0.770                 # https://github.com/python/mypy
+colorama==0.4.3             # https://github.com/tartley/colorama
+django-extensions==3.0.9    # https://github.com/django-extensions/django-extensions

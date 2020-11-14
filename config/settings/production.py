@@ -1,10 +1,8 @@
-"""
 from .base import *
-from .base import env
 
-SECRET_KEY = env("DJANGO_SECRET_KEY")
 
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["juanherrera.com"])
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-DATABASES["default"] = env.db("DATABASE_URL")
-"""
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS")
+
+DATABASES["default"] = os.getenv("DATABASE_URL")
