@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="documentation/python.jpeg">
+  <img src="core/static/img/python.jpeg">
 </p>
 
 # Django Init Project
