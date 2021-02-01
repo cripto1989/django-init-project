@@ -1,35 +1,43 @@
+DEV=docker-compose -f docker-compose.yml -f docker-compose.dev.yml
+
 POSTGRES_USER=django
 POSTGRES_DB=mydb
+
+TESTFILES?="tests/unit"
+TEST_PARAMS?=--no-migrations --reuse-db
 
 default: start
 
 start:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+	${DEV} up
 
 build:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
+	${DEV} build
 
 showmigrations:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec web bash -c "./manage.py showmigrations"
+	${DEV} exec web bash -c "./manage.py showmigrations"
 
 makemigrations:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec web bash -c "./manage.py makemigrations"	
+	${DEV} exec web bash -c "./manage.py makemigrations"	
 
 migrate:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec web bash -c "./manage.py migrate"
+	${DEV} exec web bash -c "./manage.py migrate"
+
+test:
+	${DEV} exec web bash -c "python3 -m pytest --disable-warnings ${TEST_PARAMS} ${TESTFILES}"
 
 createsuperuser:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec web bash -c "./manage.py createsuperuser"
+	${DEV} exec web bash -c "./manage.py createsuperuser"
 
 shell_plus:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec web bash -c "./manage.py shell_plus"
+	${DEV} exec web bash -c "./manage.py shell_plus"
 
 web:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec web /bin/bash
+	${DEV} exec web /bin/bash
 
 db:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec /bin/bash
+	${DEV} exec /bin/bash
 
 psql:
-	docker-compose -f docker-compose.yml -f docker-compose.dev.yml exec db sh -c "psql -d $(POSTGRES_DB) -U $(POSTGRES_USER)"
+	${DEV} exec db sh -c "psql -d $(POSTGRES_DB) -U $(POSTGRES_USER)"
 	
