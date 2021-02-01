@@ -14,7 +14,6 @@ __pycache__/
 
 ### File for deploy with Nginx
 *.conf
-*.ini
 uwsgi_params
 
 ### Folder for collectstatic
